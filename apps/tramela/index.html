@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tramela • Mistério, lógica e dedução a bordo</title>
+  <meta name="description" content="Tramela: puzzles de dedução lógica numa estação espacial sabotada. Posicione cada suspeito no tabuleiro a partir de pistas, resolva o Caso do Dia e encare o Modo Alerta Vermelho. iOS e Android.">
+  <meta property="og:title" content="Tramela">
+  <meta property="og:description" content="Mistério, lógica e dedução a bordo. Puzzles de dedução para iOS e Android.">
+  <meta property="og:image" content="https://cucapensante.com.br/assets/tramela-icon.png">
+  <meta name="theme-color" content="#070B14">
+  <link rel="icon" type="image/png" href="../../assets/tramela-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/app.css">
+  <style>
+    :root { --c: #38BDF8; --red: #F43F5E; }
+    .hero .icon { border-radius: 22px; }
+    /* faixa do Alerta Vermelho troca a cor de destaque para vermelho */
+    .feature-band.alert { --c: var(--red); }
+    /* exemplo de pistas */
+    .clues { display: grid; gap: 10px; }
+    .clue { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-size: .95rem; }
+    .clue .tag { font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; color: var(--c); padding: 3px 7px; border-radius: 5px; border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); white-space: nowrap; margin-top: 3px; }
+    .levels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    @media (max-width: 760px) { .levels { grid-template-columns: 1fr 1fr; } }
+    .level { padding: 18px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); }
+    .level small { font-family: var(--mono); font-size: .68rem; letter-spacing: .15em; color: var(--c); display: block; margin-bottom: 6px; }
+    .level b { font-weight: 600; display: block; }
+    .level span { color: var(--dim); font-size: .82rem; }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="back" href="../../">Todos os jogos</a>
+      <a class="brand" href="#"><img src="../../assets/tramela-icon.png" alt=""><span>Tramela</span></a>
+      <a class="btn" href="#suporte">Suporte</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">Estação Tramela · dedução lógica</div>
+          <img class="icon" src="../../assets/tramela-icon.png" alt="Ícone do Tramela">
+          <h1>Tramela</h1>
+          <p class="tagline">Mistério, lógica e dedução a bordo.</p>
+          <p class="lead">Alguém sabotou o suporte de vida de um módulo da estação, e só um tripulante estava no mesmo compartimento que a vítima. Cruze logs de biometria, sensores de escotilha e câmeras para posicionar cada suspeito no tabuleiro. Um por linha, um por coluna, uma única resposta certa.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://apps.apple.com/app/id6811934030" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+              Baixar na App Store
+            </a>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.vedigitalhub.tramela_app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7-9.5-9.7zm10.6 10.8 2.6 2.6-11 6.3 8.4-8.9zm3.9-3.8 3.1 1.8c.9.5.9 1.3 0 1.8l-3.1 1.8-2.8-2.7 2.8-2.7zM5.8 1.6l11 6.3-2.6 2.6-8.4-8.9z"/></svg>
+              Baixar no Google Play
+            </a>
+          </div>
+          <div class="meta">
+            <span>Grátis</span><span>iOS · Android</span><span>PT-BR · EN</span><span>Sem cadastro</span><span>Game Center · Play Games</span>
+          </div>
+        </div>
+        <div class="visual reveal">
+          <div class="shots">
+            <figure class="shot a"><img src="../../assets/tramela-2.jpg" alt="Tabuleiro de dedução do Tramela"></figure>
+            <figure class="shot b"><img src="../../assets/tramela-4.jpg" alt="Modo Alerta Vermelho"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="como-jogar">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Como jogar</div>
+          <h2>Leia as pistas. Elimine. Acuse.</h2>
+          <p>Não há chute: cada caso é construído para ter exatamente uma solução alcançável só por dedução.</p>
+        </div>
+        <div class="grid-2 reveal" style="align-items: start;">
+          <div class="steps" style="grid-template-columns: 1fr;">
+            <div class="step"><h3>Estude o tabuleiro</h3><p>Uma grade n×n representa os compartimentos do módulo. A vítima está numa célula fixa; os suspeitos precisam ocupar o resto, sem repetir linha ou coluna.</p></div>
+            <div class="step"><h3>Aplique as pistas</h3><p>Pistas absolutas, negativas, relativas ("a norte de"), de adjacência, de contagem e condicionais reduzem as posições possíveis até sobrar uma.</p></div>
+            <div class="step"><h3>Aponte o culpado</h3><p>Quem ficou sozinho no compartimento da vítima é o sabotador. Feche o caso e avance para o próximo módulo da estação.</p></div>
+          </div>
+          <div class="clues" aria-label="Exemplo de pistas">
+            <div class="clue"><span class="tag">BIOMETRIA</span><span>Arianna passou pela escotilha do setor 7 às 03:10 — ela está na linha mais ao norte.</span></div>
+            <div class="clue"><span class="tag">CÂMERA</span><span>Nenhum suspeito foi visto no corredor B. A coluna 2 está vazia entre as linhas 1 e 3.</span></div>
+            <div class="clue"><span class="tag">SENSOR</span><span>Colleen estava adjacente ao Laboratório Bio, mas não dentro dele.</span></div>
+            <div class="clue"><span class="tag">CONDICIONAL</span><span>Se Brycen está na hidroponia, então Dan está a leste dele.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="progressao">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Progressão</div>
+          <h2>30 módulos de investigação, do 4×4 ao 6×6.</h2>
+          <p>Os módulos da estação — Engenharia, Laboratórios Centrais, Domo de Hidroponia e outros — agrupam fases progressivas com dossiês completos.</p>
+        </div>
+        <div class="levels reveal">
+          <div class="level"><small>FASES 1–10</small><b>Tutorial · 4×4</b><span>Pistas diretas e negativas</span></div>
+          <div class="level"><small>FASES 11–40</small><b>Básico · 5×5</b><span>Pistas relativas e adjacência</span></div>
+          <div class="level"><small>FASES 41+</small><b>Intermediário · 6×6</b><span>Contagem e exclusão da vítima</span></div>
+          <div class="level"><small>MESTRE</small><b>Avançado · 6×6</b><span>Condicionais e dedução em cadeia</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="recursos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Recursos</div>
+          <h2>Um detetive de bolso.</h2>
+        </div>
+        <div class="grid-3 reveal">
+          <div class="card"><div class="ic">🛰️</div><h3>Caso do Dia</h3><p>Um caso novo por dia, o mesmo para todo mundo. Resolva, mantenha a sequência e compare no Game Center ou Play Games.</p></div>
+          <div class="card"><div class="ic">🚨</div><h3>Modo Alerta Vermelho</h3><p>Sobrecargas em sequência contra o relógio. Cada caso resolvido dá mais tempo; um erro custa caro.</p></div>
+          <div class="card"><div class="ic">📁</div><h3>Dossiê da tripulação</h3><p>Conheça cada tripulante, seu posto e seus hábitos. Detalhes do dossiê viram pistas nos casos mais difíceis.</p></div>
+          <div class="card"><div class="ic">🧩</div><h3>Solução única, sempre</h3><p>O gerador só aceita um caso quando o conjunto mínimo de pistas leva a exatamente uma resposta.</p></div>
+          <div class="card"><div class="ic">💡</div><h3>Dicas quando travar</h3><p>Peça uma dica para destravar o raciocínio sem entregar a resposta inteira. No Pro, elas são ilimitadas.</p></div>
+          <div class="card"><div class="ic">🎧</div><h3>Trilha a bordo</h3><p>Trilha sonora e efeitos que colocam você dentro da estação, com controles de som separados.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="galeria">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Galeria</div>
+          <h2>A bordo da estação.</h2>
+        </div>
+        <div class="gallery five reveal">
+          <figure><img src="../../assets/tramela-1.jpg" alt="Descubra o impostor" loading="lazy"><figcaption>Descubra o impostor</figcaption></figure>
+          <figure><img src="../../assets/tramela-2.jpg" alt="Tabuleiro de dedução" loading="lazy"><figcaption>Tabuleiro de dedução</figcaption></figure>
+          <figure><img src="../../assets/tramela-3.jpg" alt="30 módulos de investigação" loading="lazy"><figcaption>30 módulos de investigação</figcaption></figure>
+          <figure><img src="../../assets/tramela-4.jpg" alt="Alerta Vermelho" loading="lazy"><figcaption>Alerta Vermelho</figcaption></figure>
+          <figure><img src="../../assets/tramela-5.jpg" alt="Dossiê da tripulação" loading="lazy"><figcaption>Dossiê da tripulação</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="feature-band alert reveal">
+          <div>
+            <div class="eyebrow">Alerta Vermelho</div>
+            <h2>Desarme sobrecargas em sequência contra o relógio.</h2>
+            <p>Casos rápidos, um atrás do outro, com o cronômetro correndo. Ideal para quem já domina as pistas e quer testar velocidade de raciocínio — com placar e streak próprios.</p>
+          </div>
+          <ul>
+            <li>Alerta Rápido (4×4) e Sobrecarga Crítica (5×5)</li>
+            <li>Avisos nos últimos 45 e 15 segundos</li>
+            <li>Placar mundial separado do Caso do Dia</li>
+            <li>Conquistas no Game Center e Play Games</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="feature-band reveal">
+          <div>
+            <div class="eyebrow">Tramela Pro</div>
+            <h2>Sem anúncios, dicas ilimitadas, todos os módulos.</h2>
+            <p>A versão gratuita tem anúncios discretos. O Pro é uma compra única que remove todos, libera dicas ilimitadas e todos os módulos (5×5, 6×6 e futuras expansões). O pagamento é processado pela Apple ou pelo Google — nunca temos acesso aos seus dados de cartão.</p>
+          </div>
+          <ul>
+            <li>Zero anúncios</li>
+            <li>Dicas ilimitadas</li>
+            <li>Todos os módulos da estação</li>
+            <li>Compra única, sem assinatura</li>
+            <li>Apoia o desenvolvimento independente</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="support" id="suporte">
+      <div class="wrap">
+        <div class="box reveal">
+          <div class="eyebrow">Suporte e contato</div>
+          <h2>Dificuldade técnica, sugestão de módulo ou bug?</h2>
+          <p>Escreva contando o que aconteceu e em qual aparelho. Costumo responder em até 48 horas em dias úteis.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:contato@cucapensante.com.br?subject=Suporte%20-%20Tramela">Falar com o suporte</a>
+            <a class="btn" href="https://emanuelcastro.github.io/tramela/">Política de privacidade</a>
+            <a class="btn" href="https://github.com/emanuelcastro/tramela/issues" target="_blank" rel="noopener">Reportar no GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 Cuca Pensante · VE Digital Hub. Todos os direitos reservados.</div>
+      <div class="links">
+        <a href="../../">Todos os jogos</a>
+        <a href="../blueprint-mansion/">Blueprint Mansion</a>
+        <a href="../nodyx/">Nodyx</a>
+        <a href="https://jogoencaixe.com.br/">Encaixe</a>
+        <a href="https://emanuelcastro.github.io/tramela/">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/app.js"></script>
+</body>
+</html>

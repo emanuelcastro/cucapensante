@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nodyx • Puzzles casuais táteis e Desafio Diário</title>
+  <meta name="description" content="Nodyx: puzzles casuais, táteis e minimalistas. Três mecânicas — Setas, Pontos e Blocos Deslizantes — fases procedurais com solução garantida, capítulos e Desafio Diário mundial. iOS e Android.">
+  <meta property="og:title" content="Nodyx • Puzzles & Desafios">
+  <meta property="og:description" content="Três mecânicas, um desafio diário mundial. Puzzles casuais para iOS e Android.">
+  <meta property="og:image" content="https://cucapensante.com.br/assets/nodyx-icon.png">
+  <meta name="theme-color" content="#070B14">
+  <link rel="icon" type="image/png" href="../../assets/nodyx-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/app.css">
+  <style>
+    :root { --c: #7C7FF5; --cy: #00E5FF; --coral: #FF7A59; --gold: #E5A93C; }
+
+
+    /* cartões de modo com mini-ilustração */
+    .mode { padding: 0; overflow: hidden; }
+    .mode .art { height: 150px; display: grid; place-items: center; background: linear-gradient(180deg, rgba(255,255,255,.04), transparent); border-bottom: 1px solid var(--line); }
+    .mode .art svg { width: 130px; height: 110px; overflow: visible; }
+    .mode .body { padding: 22px 24px 24px; }
+    .mode .art line.g { stroke: rgba(255,255,255,.12); }
+    .mode .art .t { font-family: var(--mono); font-weight: 700; font-size: 20px; text-anchor: middle; dominant-baseline: central; }
+
+    /* capítulos */
+    .chapters { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    @media (max-width: 760px) { .chapters { grid-template-columns: repeat(2, 1fr); } }
+    .chapter { padding: 18px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); }
+    .chapter small { font-family: var(--mono); font-size: .68rem; letter-spacing: .15em; color: var(--c); display: block; margin-bottom: 6px; }
+    .chapter b { font-weight: 600; display: block; }
+    .chapter span { color: var(--dim); font-size: .82rem; }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="back" href="../../">Todos os jogos</a>
+      <a class="brand" href="#"><img src="../../assets/nodyx-icon.png" alt=""><span>Nodyx</span></a>
+      <a class="btn primary" href="https://apps.apple.com/app/id6813184656" target="_blank" rel="noopener">App Store</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="eyebrow">Puzzles casuais táteis</div>
+          <img class="icon" src="../../assets/nodyx-icon.png" alt="Ícone do Nodyx">
+          <h1>Nodyx</h1>
+          <p class="tagline">Três mecânicas. Um desafio diário mundial.</p>
+          <p class="lead">Conecte pontos sem cruzar a própria linha, liberte setas do tabuleiro na ordem certa e deslize blocos até abrir caminho. Fases geradas proceduralmente, sempre com solução garantida, em sessões curtas e sem pressa. Minimalista, tátil e relaxante.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://apps.apple.com/app/id6813184656" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+              Baixar na App Store
+            </a>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.nodyx.app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7-9.5-9.7zm10.6 10.8 2.6 2.6-11 6.3 8.4-8.9zm3.9-3.8 3.1 1.8c.9.5.9 1.3 0 1.8l-3.1 1.8-2.8-2.7 2.8-2.7zM5.8 1.6l11 6.3-2.6 2.6-8.4-8.9z"/></svg>
+              Baixar no Google Play
+            </a>
+          </div>
+          <div class="meta">
+            <span>Grátis</span><span>iOS · Android</span><span>PT-BR · EN</span><span>Sem cadastro</span><span>Háptico</span>
+          </div>
+        </div>
+        <div class="visual reveal">
+          <div class="shots">
+            <figure class="shot a"><img src="../../assets/nodyx-3.jpg" alt="Modo Setas: setas desembaraçadas"></figure>
+            <figure class="shot b"><img src="../../assets/nodyx-4.jpg" alt="Modo Pontos: ligue todos os pontos"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="modos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Três modos</div>
+          <h2>Mecânicas diferentes, a mesma sensação de encaixe.</h2>
+          <p>Cada modo tem regras simples de aprender em segundos, mas as fases crescem em profundidade a cada capítulo.</p>
+        </div>
+        <div class="grid-3 reveal">
+          <div class="card mode">
+            <div class="art">
+              <svg viewBox="0 0 130 110">
+                <g class="g" stroke="rgba(255,255,255,.12)"><line x1="0" y1="37" x2="130" y2="37"/><line x1="0" y1="73" x2="130" y2="73"/><line x1="43" y1="0" x2="43" y2="110"/><line x1="87" y1="0" x2="87" y2="110"/></g>
+                <polyline points="21,18 21,55 65,55 65,92 108,92" fill="none" stroke="#7C7FF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="21" cy="18" r="8" fill="#0C1122" stroke="#7C7FF5" stroke-width="4"/><circle cx="108" cy="92" r="8" fill="#7C7FF5"/>
+                <polyline points="108,18 65,18 65,37" fill="none" stroke="#FF7A59" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="108" cy="18" r="8" fill="#0C1122" stroke="#FF7A59" stroke-width="4"/>
+              </svg>
+            </div>
+            <div class="body"><h3>Pontos</h3><p>Toque e arraste a partir de um círculo colorido até encontrar o outro da mesma cor. O caminho não pode se cruzar nem repetir uma célula.</p></div>
+          </div>
+          <div class="card mode">
+            <div class="art">
+              <svg viewBox="0 0 130 110">
+                <g class="g" stroke="rgba(255,255,255,.12)"><line x1="0" y1="37" x2="130" y2="37"/><line x1="0" y1="73" x2="130" y2="73"/><line x1="43" y1="0" x2="43" y2="110"/><line x1="87" y1="0" x2="87" y2="110"/></g>
+                <text class="t" x="21" y="18" fill="#00E5FF">↑</text><text class="t" x="65" y="18" fill="#00E5FF">→</text><text class="t" x="108" y="55" fill="#00E5FF">↓</text>
+                <text class="t" x="21" y="55" fill="#00E5FF">←</text><text class="t" x="65" y="92" fill="#00E5FF">↓</text><text class="t" x="108" y="92" fill="#5B6780">←</text>
+              </svg>
+            </div>
+            <div class="body"><h3>Setas</h3><p>Toque numa seta para ela voar do tabuleiro na direção que aponta — só se o caminho até a borda estiver livre. A ordem certa é o puzzle.</p></div>
+          </div>
+          <div class="card mode">
+            <div class="art">
+              <svg viewBox="0 0 130 110">
+                <rect x="4" y="4" width="122" height="102" rx="10" fill="none" stroke="rgba(255,255,255,.12)"/>
+                <rect x="10" y="10" width="26" height="54" rx="5" fill="rgba(124,127,245,.55)"/>
+                <rect x="94" y="10" width="26" height="54" rx="5" fill="rgba(124,127,245,.55)"/>
+                <rect x="40" y="10" width="50" height="50" rx="6" fill="#FF7A59"/>
+                <rect x="10" y="68" width="54" height="22" rx="5" fill="rgba(124,127,245,.55)"/>
+                <rect x="68" y="68" width="22" height="22" rx="5" fill="rgba(124,127,245,.35)"/>
+                <path d="M52 100 h26" stroke="#E5A93C" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 6"/>
+              </svg>
+            </div>
+            <div class="body"><h3>Blocos deslizantes</h3><p>Numa grade 4×5 com só dois espaços vazios, deslize peças horizontais, verticais e pequenas até levar o bloco mestre 2×2 à saída.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="capitulos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Progressão</div>
+          <h2>Cinco capítulos, trinta fases cada.</h2>
+          <p>Conclua as 30 fases de um capítulo para desbloquear o próximo. Junte estrelas, bata recordes de tempo e desbloqueie temas visuais no caminho.</p>
+        </div>
+        <div class="chapters reveal">
+          <div class="chapter"><small>CAP. 01</small><b>Descoberta</b><span>Aprenda cada modo</span></div>
+          <div class="chapter"><small>CAP. 02</small><b>Despertar</b><span>Grades maiores</span></div>
+          <div class="chapter"><small>CAP. 03</small><b>Equilíbrio</b><span>Obstáculos e vidas</span></div>
+          <div class="chapter"><small>CAP. 04</small><b>Harmonia</b><span>Malhas densas de setas</span></div>
+          <div class="chapter"><small>CAP. 05</small><b>Maestria</b><span>Modos Master</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="recursos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Recursos</div>
+          <h2>Feito para sessões curtas e tranquilas.</h2>
+        </div>
+        <div class="grid-3 reveal">
+          <div class="card"><div class="ic">📅</div><h3>Desafio Diário mundial</h3><p>Três puzzles sincronizados para todos os jogadores do planeta. Complete os três, mantenha a sequência e compare tempos no placar mundial.</p></div>
+          <div class="card"><div class="ic">✅</div><h3>Solução garantida</h3><p>Toda fase nasce de uma solução válida — o gerador nunca cria um puzzle "no chute" para testar depois.</p></div>
+          <div class="card"><div class="ic">💡</div><h3>Dicas em sub-metas</h3><p>Travou? Toque na lâmpada e veja uma sub-meta intermediária passo a passo, em vez de a resposta inteira.</p></div>
+          <div class="card"><div class="ic">⭐</div><h3>Estrelas e recordes</h3><p>Cada fase guarda suas estrelas e o melhor tempo. Volte para melhorar a marca quando quiser.</p></div>
+          <div class="card"><div class="ic">🎨</div><h3>Temas desbloqueáveis</h3><p>Avance nas fases para liberar novos visuais, como Cyber Gadget e Obsidiana & Ouro.</p></div>
+          <div class="card"><div class="ic">📳</div><h3>Tátil de verdade</h3><p>Vibração háptica em cada conexão, encaixe e erro. Som ambiente opcional para relaxar.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="galeria">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Galeria</div>
+          <h2>Pequenos desafios, grandes momentos.</h2>
+        </div>
+        <div class="gallery reveal">
+          <figure><img src="../../assets/nodyx-1.jpg" alt="Puzzles táteis e relaxantes" loading="lazy"><figcaption>Puzzles táteis e relaxantes</figcaption></figure>
+          <figure><img src="../../assets/nodyx-2.jpg" alt="Jornada em blocos de 30 fases" loading="lazy"><figcaption>Capítulos de 30 fases</figcaption></figure>
+          <figure><img src="../../assets/nodyx-3.jpg" alt="Modo Setas" loading="lazy"><figcaption>Modo Setas</figcaption></figure>
+          <figure><img src="../../assets/nodyx-4.jpg" alt="Modo Pontos" loading="lazy"><figcaption>Modo Pontos</figcaption></figure>
+          <figure><img src="../../assets/nodyx-5.jpg" alt="Modo Blocos deslizantes" loading="lazy"><figcaption>Modo Blocos</figcaption></figure>
+          <figure><img src="../../assets/nodyx-6.jpg" alt="Desafio Diário com ranking mundial" loading="lazy"><figcaption>Desafio Diário</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="feature-band reveal">
+          <div>
+            <div class="eyebrow">Nodyx Pro</div>
+            <h2>Dicas ilimitadas, sem anúncios, temas exclusivos.</h2>
+            <p>O jogo é gratuito e completo. O Pro é uma compra única para quem quer jogar sem interrupções e apoiar o desenvolvimento.</p>
+          </div>
+          <ul>
+            <li>Dicas estratégicas ilimitadas</li>
+            <li>Nenhum anúncio, nem vídeos de recompensa</li>
+            <li>Vidas infinitas no modo Setas</li>
+            <li>Temas exclusivos de gadget</li>
+            <li>Compra única, sem assinatura</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="support" id="suporte">
+      <div class="wrap">
+        <div class="box reveal">
+          <div class="eyebrow">Suporte</div>
+          <h2>Precisa de ajuda ou encontrou um bug?</h2>
+          <p>Escreva contando o que aconteceu e em qual aparelho. Costumo responder em até 48 horas em dias úteis.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:contato@cucapensante.com.br?subject=Suporte%20-%20Nodyx">Falar com o suporte</a>
+            <a class="btn" href="https://emanuelcastro.github.io/nodyx/privacy.html">Política de privacidade</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 Cuca Pensante · VE Digital Hub. Todos os direitos reservados.</div>
+      <div class="links">
+        <a href="../../">Todos os jogos</a>
+        <a href="../blueprint-mansion/">Blueprint Mansion</a>
+        <a href="../tramela/">Tramela</a>
+        <a href="https://jogoencaixe.com.br/">Encaixe</a>
+        <a href="https://emanuelcastro.github.io/nodyx/privacy.html">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/app.js"></script>
+</body>
+</html>
