@@ -1,0 +1,4 @@
+# posts e prints do Instagram ficam fora do site publicado
+instagram/
+.DS_Store
+__pycache__/
