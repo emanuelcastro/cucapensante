@@ -17,7 +17,9 @@
   <meta property="og:image:alt" content="Cuca Pensante: jogos de lógica para quem gosta de pensar">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#070B14">
-  <link rel="icon" type="image/png" href="assets/nodyx-icon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -91,14 +93,9 @@
     .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .wordmark {
       display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text);
-      font-family: var(--mono); font-size: .8rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      font-family: var(--display); font-size: 1rem; font-weight: 900; letter-spacing: -0.01em; text-transform: lowercase;
     }
-    .wordmark .dots { display: flex; gap: 4px; }
-    .wordmark .dots i { width: 8px; height: 8px; border-radius: 2px; display: block; }
-    .wordmark .dots i:nth-child(1) { background: var(--bm); }
-    .wordmark .dots i:nth-child(2) { background: var(--nx); }
-    .wordmark .dots i:nth-child(3) { background: var(--tr); }
-    .wordmark .dots i:nth-child(4) { background: var(--en); }
+    .wordmark .mark { width: 28px; height: 28px; flex: none; display: block; }
     nav { display: flex; gap: 6px; }
     nav a {
       color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500;
@@ -265,7 +262,7 @@
 
   <header>
     <div class="wrap nav">
-      <a href="#" class="wordmark"><span class="dots"><i></i><i></i><i></i><i></i></span>Cuca Pensante</a>
+      <a href="#" class="wordmark" aria-label="Cuca Pensante"><svg class="mark" viewBox="0 0 68 68" aria-hidden="true"><path d="M53 0A15 15 0 0 1 68 15A5 5 0 0 1 63 20H53A5 5 0 0 1 48 15V5A5 5 0 0 1 53 0Z" fill="#00E5FF"/><rect x="24" y="0" width="20" height="20" rx="5" fill="#15D4FD"/><path d="M15 0A5 5 0 0 1 20 5V15A5 5 0 0 1 15 20H5A5 5 0 0 1 0 15A15 15 0 0 1 15 0Z" fill="#29C3FC"/><rect x="0" y="24" width="20" height="20" rx="5" fill="#3EB2FA"/><path d="M5 48H15A5 5 0 0 1 20 53V63A5 5 0 0 1 15 68A15 15 0 0 1 0 53A5 5 0 0 1 5 48Z" fill="#53A1F8"/><rect x="24" y="48" width="20" height="20" rx="5" fill="#6790F7"/><path d="M53 48H63A5 5 0 0 1 68 53A15 15 0 0 1 53 68A5 5 0 0 1 48 63V53A5 5 0 0 1 53 48Z" fill="#7C7FF5"/><circle cx="34" cy="34" r="10" fill="#F2B632"/></svg>cuca pensante</a>
       <nav>
         <a href="#blueprint-mansion">Blueprint Mansion</a>
         <a href="#nodyx">Nodyx</a>
