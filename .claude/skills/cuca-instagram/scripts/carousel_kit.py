@@ -39,7 +39,8 @@ GAMES = {
 STUDIO_COLOR = "#00E5FF"
 
 # Proporção: 3:4 (1080×1440) é o padrão atual do feed; 4:5 (1080×1350) também serve.
-FORMATS = {"3:4": (420, 560), "4:5": (420, 525)}
+# 9:16 (1080×1920) é story: cada slide vira um quadro, sem barra de progresso nem seta.
+FORMATS = {"3:4": (420, 560), "4:5": (420, 525), "9:16": (420, 746.667)}
 
 
 # ---------------------------------------------------------------- utilidades
@@ -145,6 +146,46 @@ def crossword_clues(words: list[dict], direction: str) -> str:
     return f'<div class="cw-clues"><h4>{title}</h4><ol>{items}</ol></div>'
 
 
+def _palavra_cores(guess: str, answer: str) -> list[str]:
+    """certa / presente / ausente, com a regra usual de letras repetidas."""
+    guess, answer = guess.upper(), answer.upper()
+    res = ["ausente"] * len(guess)
+    sobra: dict[str, int] = {}
+    for i, (g, a) in enumerate(zip(guess, answer)):
+        if g == a:
+            res[i] = "certa"
+        else:
+            sobra[a] = sobra.get(a, 0) + 1
+    for i, g in enumerate(guess):
+        if res[i] != "certa" and sobra.get(g, 0) > 0:
+            res[i] = "presente"
+            sobra[g] -= 1
+    return res
+
+
+def palavra(guesses: list[str], answer: str, rows: int = 6, cell: int = 40) -> str:
+    """Tabuleiro da Palavra do dia do Encaixe (5 letras, 6 tentativas), nas cores do jogo.
+    Use respostas de dias passados ou a palavra de exemplo do app ("santa")."""
+    out = []
+    for r in range(rows):
+        if r < len(guesses):
+            g = guesses[r].upper()
+            out += [f'<i class="{c}"><em>{esc(ch)}</em></i>' for ch, c in zip(g, _palavra_cores(g, answer))]
+        else:
+            out += ["<i></i>"] * len(answer)
+    return f'<div class="pw" style="--cell:{cell}px">' + "".join(out) + "</div>"
+
+
+def palavra_compartilhar(guesses: list[str], answer: str, numero: int | None = None) -> str:
+    """Resultado compartilhado sem letras: quadradinhos por tentativa.
+    Só passe `numero` quando for a palavra real daquele número."""
+    linhas = "".join(
+        "<div>" + "".join(f'<i class="{c}"></i>' for c in _palavra_cores(g, answer)) + "</div>"
+        for g in guesses)
+    return (f'<div class="pw-share"><b>Encaixe Palavra{f" nº {numero}" if numero else ""} · {len(guesses)}/6</b>'
+            f'{linhas}<span>jogoencaixe.com.br/?palavra</span></div>')
+
+
 def load_encaixe(date: str) -> dict:
     """Carrega a grade do Encaixe de uma data (AAAA-MM-DD) já passada."""
     import datetime
@@ -177,6 +218,8 @@ class Carousel:
         pct = (i + 1) / total * 100
         top = (f'<div class="top"><span class="brand">{mark_svg(20, mono=variant == "accent")}cuca pensante</span>'
                f'<span class="tag">{esc(tag)}</span></div>')
+        if self.fmt == "9:16":
+            return top  # o Instagram já mostra o progresso dos stories
         bar = (f'<div class="bar"><div class="track"><div style="width:{pct:.1f}%"></div></div>'
                f'<span>{i + 1}/{total}</span></div>')
         arrow = "" if i == total - 1 else (
@@ -195,7 +238,7 @@ class Carousel:
         for i, (body, variant, tag, align, accent) in enumerate(self.slides):
             acc = f' style="--c:{accent}"' if accent else ""
             slides_html.append(
-                f'<section class="slide v-{variant} a-{align}"{acc}>'
+                f'<section class="slide v-{variant} a-{align}{" story" if self.fmt == "9:16" else ""}"{acc}>'
                 f'<div class="content">{body}</div>{self._chrome(i, total, tag, variant)}</section>')
         dots = "".join("<i></i>" for _ in range(total))
         page = (TEMPLATE
@@ -253,6 +296,9 @@ body{background:#1B1F2A;font-family:var(--body);color:var(--text);min-height:100
 .slide.v-accent{background:var(--c);color:#061019}
 .slide.v-accent::before{background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px)}
 .content{position:absolute;inset:58px 36px 56px 28px;display:flex;flex-direction:column;gap:14px;z-index:2}
+/* story: topo e base ficam cobertos pela interface do Instagram (~14% de cada lado) */
+.story .content{inset:130px 28px 120px 28px}
+.story .top{top:62px}
 .a-center .content{justify-content:center}.a-end .content{justify-content:flex-end}.a-start .content{justify-content:flex-start}
 
 .top{position:absolute;top:0;left:0;right:0;padding:20px 28px 0;display:flex;justify-content:space-between;align-items:center;z-index:5}
@@ -314,6 +360,18 @@ body{background:#1B1F2A;font-family:var(--body);color:var(--text);min-height:100
 .cw-clues ol{list-style:none;display:flex;flex-direction:column;gap:5px}
 .cw-clues li{font-size:13px;line-height:1.35;display:flex;gap:8px}
 .cw-clues li b{font-family:var(--mono);color:var(--c);min-width:12px}
+/* Palavra do dia (Encaixe): certa = azul da marca, presente = amarelo, ausente = cinza */
+.pw{display:grid;grid-template-columns:repeat(5,var(--cell));gap:5px;align-self:center}
+.pw i{width:var(--cell);height:var(--cell);border-radius:6px;border:2px solid rgba(246,241,231,.18);display:grid;place-items:center}
+.pw i.certa,.pw i.presente,.pw i.ausente{border-color:transparent}
+.pw em{font-style:normal;font-family:var(--display);font-weight:700;font-size:calc(var(--cell)*.46);color:#fff}
+.pw .certa{background:#1F5F8B}.pw .presente{background:#F2B632}.pw .presente em{color:#1C1B19}.pw .ausente{background:#7C766B}
+.pw-share{display:inline-flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--line);align-self:flex-start}
+.pw-share b{font-family:var(--mono);font-size:11px;margin-bottom:4px}
+.pw-share div{display:flex;gap:3px}
+.pw-share i{width:18px;height:18px;border-radius:3px}
+.pw-share .certa{background:#1F5F8B}.pw-share .presente{background:#F2B632}.pw-share .ausente{background:#7C766B}
+.pw-share span{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:4px}
 </style></head>
 <body>
 <div class="ig-frame">

@@ -69,6 +69,12 @@ Como o jogo é feito: gerador de fases com solução única, escolha das pistas 
 | 2–4 | A explicação em partes, com imagem quando houver | dark / glow |
 | 5 | Ligação com o jogo + CTA | accent |
 
+## 6. Story
+
+`Carousel(..., fmt="9:16")`. De 1 a 3 quadros. Use `align="start"` quando o conteúdo for alto. O adesivo de link é colocado no app: deixe um espaço vazio (`<div style="height:150px"></div>`) e diga ao usuário onde pôr.
+
+Usos: gabarito do desafio do dia anterior, aviso de post novo, "a grade de hoje já saiu".
+
 ---
 
 ## Legenda

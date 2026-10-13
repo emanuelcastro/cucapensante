@@ -3,12 +3,13 @@
     python3 .claude/skills/cuca-instagram/scripts/export.py instagram/posts/<post>/preview.html
 
 Gera <pasta do post>/slides/slide_01.png… em 1080 px de largura
-(1080×1440 no formato 3:4, 1080×1350 no 4:5). O layout continua em 420 px;
+(1080×1440 no formato 3:4, 1080×1350 no 4:5, 1080×1920 no story 9:16). O layout continua em 420 px;
 o device_scale_factor amplia sem mudar nada de lugar.
 """
 import sys
 from pathlib import Path
 
+from PIL import Image
 from playwright.sync_api import sync_playwright
 
 OUT_W = 1080
@@ -35,11 +36,11 @@ def main(html_path: str) -> None:
         probe.goto(html.as_uri())
         w, h = probe.evaluate("""() => {
             const s = getComputedStyle(document.documentElement);
-            return [parseInt(s.getPropertyValue('--W')), parseInt(s.getPropertyValue('--H'))];
+            return [parseFloat(s.getPropertyValue('--W')), parseFloat(s.getPropertyValue('--H'))];
         }""")
         probe.close()
 
-        page = browser.new_page(viewport={"width": w, "height": h}, device_scale_factor=OUT_W / w)
+        page = browser.new_page(viewport={"width": int(w), "height": round(h)}, device_scale_factor=OUT_W / w)
         page.goto(html.as_uri(), wait_until="networkidle")
         page.evaluate("document.fonts.ready")
         page.wait_for_timeout(800)
@@ -57,6 +58,11 @@ def main(html_path: str) -> None:
             page.wait_for_timeout(150)
             target = out_dir / f"slide_{i + 1:02d}.png"
             page.screenshot(path=str(target), clip={"x": 0, "y": 0, "width": w, "height": h})
+            # arredondamento do navegador pode tirar 1–2 px; garante o tamanho exato (ex.: 1080×1920)
+            alvo = (OUT_W, round(OUT_W * h / w))
+            with Image.open(target) as im:
+                if im.size != alvo:
+                    im.resize(alvo, Image.LANCZOS).save(target)
             print(target.name)
         browser.close()
     print(f"{total} slides em {out_dir}")

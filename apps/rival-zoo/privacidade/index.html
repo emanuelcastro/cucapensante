@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de privacidade • Rival Zoo</title>
+  <meta name="description" content="Política de privacidade do jogo Rival Zoo, da Cuca Pensante.">
+  <meta name="theme-color" content="#0E1A12">
+  <link rel="icon" type="image/png" href="../../../assets/rivalzoo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/app.css">
+  <style>
+    :root { --c: #4CC38A; }
+    .doc { max-width: 760px; margin: 0 auto; padding: 120px 0 80px; }
+    .doc h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin: 10px 0 8px; }
+    .doc .updated { color: var(--muted); font-size: .9rem; margin-bottom: 36px; }
+    .doc h2 { font-family: var(--display); font-size: 1.15rem; margin: 40px 0 12px; color: var(--c); }
+    .doc h3 { font-size: 1rem; margin: 22px 0 8px; }
+    .doc p, .doc li { color: #C9D2E3; }
+    .doc p { margin: 0 0 12px; }
+    .doc ul { margin: 0 0 14px 20px; }
+    .doc li { margin-bottom: 6px; }
+    .doc strong { color: var(--text); }
+    .doc a { color: var(--c); }
+    .doc table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: .92rem; }
+    .doc th, .doc td { text-align: left; vertical-align: top; padding: 10px 12px; border: 1px solid var(--line); color: #C9D2E3; }
+    .doc th { background: var(--surface); color: var(--text); font-weight: 600; }
+    .doc .box { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); margin: 14px 0; }
+    @media (max-width: 640px) { .doc table, .doc thead, .doc tbody, .doc tr, .doc th, .doc td { display: block; } .doc thead { display: none; } .doc td { border-top: none; } .doc tr { margin-bottom: 10px; border-top: 1px solid var(--line); } }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="back" href="../"><img class="hub-mark" src="../../../assets/favicon.svg" alt="">Rival Zoo</a>
+      <a class="brand" href="../"><img src="../../../assets/rivalzoo-icon.png" alt=""><span>Rival Zoo</span></a>
+      <a class="btn" href="mailto:contato@cucapensante.com.br?subject=Privacidade%20-%20Rival%20Zoo">Contato</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="doc">
+      <div class="eyebrow">Rival Zoo · Cuca Pensante</div>
+      <h1>Política de privacidade</h1>
+      <p class="updated">Última atualização: 12 de outubro de 2026</p>
+
+      <p>Esta política explica quais dados o jogo <strong>Rival Zoo</strong> (para iOS e Android) coleta, por que coleta, com quem compartilha e como você pode exercer seus direitos, conforme a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).</p>
+      <p>O Rival Zoo é desenvolvido pela <strong>Cuca Pensante (VE Digital Hub)</strong>, responsável (controladora) pelos dados descritos aqui. Contato: <a href="mailto:contato@cucapensante.com.br">contato@cucapensante.com.br</a>.</p>
+
+      <div class="box">
+        <strong>Em resumo:</strong> não pedimos seu nome, telefone, endereço ou fotos. Para jogar não é preciso cadastro. Usamos serviços do Google (Firebase e AdMob) para salvar seu progresso, montar o ranking do desafio do dia, encontrar falhas e mostrar anúncios. Você pode apagar sua conta e seus dados a qualquer momento, pelo próprio jogo.
+      </div>
+
+      <h2>1. Dados que ficam só no seu aparelho</h2>
+      <p>O progresso (fases concluídas, Pegadas, coleção, visuais comprados), as preferências (som, tema, lembrete) e os apelidos que você dá aos animais ficam guardados no aparelho. Os lembretes do desafio do dia são notificações agendadas no próprio aparelho: nenhum servidor envia mensagens para você.</p>
+
+      <h2>2. Dados que vão para a nuvem</h2>
+      <table>
+        <thead><tr><th>O quê</th><th>Para quê</th><th>Serviço</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Identificador anônimo</strong> do jogador, criado automaticamente na primeira abertura.</td>
+            <td>Guardar a cópia de segurança do progresso e o resultado no ranking.</td>
+            <td>Firebase Authentication (Google)</td>
+          </tr>
+          <tr>
+            <td><strong>E-mail e identificador da conta Apple ou Google</strong>, só se você escolher "Entrar com Apple" ou "Entrar com Google". Com a Apple, você pode ocultar seu e-mail.</td>
+            <td>Levar seu progresso para outro aparelho.</td>
+            <td>Firebase Authentication (Google), Apple, Google</td>
+          </tr>
+          <tr>
+            <td><strong>Cópia do progresso</strong>: fases, Pegadas, coleção, resultados do desafio do dia, apelidos e animal favorito.</td>
+            <td>Restaurar o progresso ao reinstalar o jogo ou trocar de aparelho.</td>
+            <td>Cloud Firestore (Google), em servidores em São Paulo</td>
+          </tr>
+          <tr>
+            <td><strong>Resultado do desafio do dia</strong>: tempo, erros, dicas, o animal favorito e um nome gerado automaticamente (ex.: "Capivara 4821").</td>
+            <td>Montar o ranking do dia, visível para outros jogadores. O nome não identifica você: não aceitamos texto digitado.</td>
+            <td>Cloud Firestore (Google)</td>
+          </tr>
+          <tr>
+            <td><strong>Dados de uso</strong>: telas abertas, fases jogadas, modelo do aparelho, versão do sistema, idioma, país aproximado e um identificador da instalação.</td>
+            <td>Entender como o jogo é usado e melhorar fases e dificuldade.</td>
+            <td>Google Analytics para Firebase</td>
+          </tr>
+          <tr>
+            <td><strong>Relatórios de falha</strong>: o que o app fazia quando fechou sozinho, modelo do aparelho e versão do sistema.</td>
+            <td>Encontrar e corrigir falhas.</td>
+            <td>Firebase Crashlytics (Google)</td>
+          </tr>
+          <tr>
+            <td><strong>Dados de anúncios</strong>: identificador de publicidade do aparelho (no iPhone, só se você permitir), endereço IP, informações do aparelho e interação com os anúncios.</td>
+            <td>Mostrar anúncios, medir resultados e evitar fraudes.</td>
+            <td>Google AdMob</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Não vendemos seus dados. Os serviços do Google tratam os dados conforme a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidade do Google</a> e os <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">termos de privacidade do Firebase</a>; parte desse tratamento pode ocorrer fora do Brasil, com as garantias previstas na LGPD.</p>
+
+      <h2>3. Anúncios</h2>
+      <ul>
+        <li>O jogo é gratuito e mostra anúncios: vídeos opcionais para ganhar uma dica ou um coração extra, e um anúncio entre fases de vez em quando (a partir da fase 12, no máximo um a cada três fases). Nunca durante uma partida nem no desafio do dia.</li>
+        <li>Os anúncios são limitados a <strong>conteúdo adequado para todos os públicos</strong>.</li>
+        <li>No <strong>iPhone</strong>, o sistema pergunta se o app pode usar o identificador de publicidade. Se você não permitir, os anúncios continuam, mas sem personalização por esse identificador. Você pode mudar a escolha em Ajustes do iPhone → Privacidade e Segurança → Rastreamento.</li>
+        <li>No <strong>Android</strong>, você pode limitar ou redefinir o identificador de publicidade nas configurações do aparelho (Google → Anúncios).</li>
+        <li>Na <strong>União Europeia e no Reino Unido</strong>, pedimos seu consentimento antes de usar dados para anúncios personalizados, e a escolha pode ser revista em Ajustes do jogo → Privacidade dos anúncios.</li>
+      </ul>
+
+      <h2>4. Compras</h2>
+      <p>Hoje o jogo não vende nada com dinheiro. Se no futuro houver compras (por exemplo, para remover anúncios), elas serão processadas pela Apple ou pelo Google: nunca temos acesso aos dados do seu cartão.</p>
+
+      <h2>5. Crianças</h2>
+      <p>O Rival Zoo é um jogo para toda a família. Não pedimos dados pessoais para jogar, o nome no ranking é gerado automaticamente e não há chat nem troca de mensagens entre jogadores. Os anúncios são limitados a conteúdo para todos os públicos. Se você é responsável por uma criança e acredita que ela nos forneceu dados pessoais (por exemplo, ao entrar com uma conta), escreva para <a href="mailto:contato@cucapensante.com.br">contato@cucapensante.com.br</a> e apagaremos.</p>
+
+      <h2>6. Por quanto tempo guardamos</h2>
+      <ul>
+        <li><strong>Cópia do progresso e conta:</strong> enquanto você usar o jogo, ou até você excluir a conta.</li>
+        <li><strong>Resultados do ranking:</strong> enquanto o ranking daquele dia existir; podem ser apagados a pedido.</li>
+        <li><strong>Dados de uso, falhas e anúncios:</strong> pelos prazos de retenção dos serviços do Google.</li>
+      </ul>
+
+      <h2>7. Seus direitos</h2>
+      <p>Pela LGPD, você pode pedir a confirmação de que tratamos seus dados, o acesso, a correção, a portabilidade e a exclusão deles, além de revogar consentimentos e obter informações sobre o compartilhamento.</p>
+      <ul>
+        <li><strong>Excluir sua conta pelo jogo:</strong> Menu → Ajustes → Conta → <strong>Excluir conta</strong>. Isso apaga a conta e a cópia do progresso na nuvem.</li>
+        <li><strong>Sair da conta:</strong> Menu → Ajustes → Conta → Sair da conta.</li>
+        <li><strong>Desligar os lembretes:</strong> Menu → Ajustes → Lembrete.</li>
+        <li><strong>Qualquer outro pedido</strong> (inclusive apagar resultados do ranking ou dados de uso): <a href="mailto:contato@cucapensante.com.br?subject=Privacidade%20-%20Rival%20Zoo">contato@cucapensante.com.br</a>. Respondemos em até 15 dias.</li>
+      </ul>
+      <p>Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+      <h2>8. Segurança</h2>
+      <p>Os dados viajam criptografados (HTTPS). No banco de dados, regras de acesso garantem que cada jogador só leia e altere a própria cópia do progresso, e que ninguém altere o resultado de outro jogador no ranking.</p>
+
+      <h2>9. Mudanças nesta política</h2>
+      <p>Se esta política mudar, a nova versão será publicada nesta página com a data atualizada. Mudanças importantes também serão avisadas no jogo.</p>
+
+      <h2>10. Contato</h2>
+      <p>Cuca Pensante (VE Digital Hub)<br>
+      E-mail: <a href="mailto:contato@cucapensante.com.br">contato@cucapensante.com.br</a><br>
+      Site: <a href="https://cucapensante.com.br/">cucapensante.com.br</a></p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 Cuca Pensante · VE Digital Hub. Todos os direitos reservados.</div>
+      <div class="links">
+        <a href="../">Rival Zoo</a>
+        <a href="../../../">Todos os jogos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../assets/app.js"></script>
+</body>
+</html>

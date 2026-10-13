@@ -64,7 +64,7 @@ instagram/
 
 | Função | Para quê |
 |---|---|
-| `Carousel(game, fmt)` | `game`: `blueprint`, `nodyx`, `tramela`, `encaixe` ou `None`. Define a cor de destaque. |
+| `Carousel(game, fmt)` | `game`: `blueprint`, `nodyx`, `tramela`, `encaixe` ou `None`. Define a cor de destaque. `fmt`: `3:4` (feed, padrão), `4:5`, ou `9:16` para story (cada slide vira um quadro de 1080×1920, sem barra nem seta; topo e base ficam livres para a interface do Instagram). |
 | `.add(html, variant, tag, align, accent)` | `variant`: `glow`, `dark`, `accent`. `align`: `center`, `end`, `start`. `tag`: rótulo no canto superior direito. `accent`: troca a cor só nesse slide. |
 | `.write(caminho, caption)` | Gera `preview.html` e `legenda.txt`. |
 | `phone(img, width, tilt)` / `phones(a, b[, c])` | Print dentro de um celular; dois ou três em leque. |
@@ -74,6 +74,7 @@ instagram/
 | `chips("a", "b")` | Etiquetas de recursos. |
 | `crossword(grid, words, reveal, cell)` / `crossword_clues(words, "across"|"down")` | Grade e pistas do Encaixe. |
 | `load_encaixe(data)` | Lê a grade de uma data passada. |
+| `palavra(tentativas, resposta, rows, cell)` / `palavra_compartilhar(tentativas, resposta, numero)` | Tabuleiro e resultado compartilhado da Palavra do dia (Encaixe). `numero` só quando for a palavra real daquele número. |
 
 Classes de texto: `.label` (rótulo mono), `.h1` (34 px), `.h2` (24 px), `.body`, `.big-num`, `.hl` (cor de destaque), `.grad` (degradê ciano→índigo, só no estúdio), `.cta`, `.row`, `.stack`, `.center`.
 
