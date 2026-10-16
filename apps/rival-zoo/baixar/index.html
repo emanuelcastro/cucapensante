@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baixe o Rival Zoo</title>
+  <meta name="description" content="Quebra-cabeça de lógica com a fauna do Brasil: 240 fases em 6 biomas e um desafio novo todo dia. Grátis para iPhone e Android.">
+  <meta name="theme-color" content="#0E1A12">
+  <meta property="og:title" content="Rival Zoo · Lógica com a fauna do Brasil">
+  <meta property="og:description" content="240 fases em 6 biomas e um desafio novo todo dia. Grátis para iPhone e Android.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cucapensante.com.br/apps/rival-zoo/baixar/">
+  <meta property="og:image" content="https://cucapensante.com.br/assets/rivalzoo-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://cucapensante.com.br/apps/rival-zoo/baixar/">
+  <link rel="icon" type="image/png" href="../../../assets/rivalzoo-icon.png">
+  <link rel="apple-touch-icon" href="../../../assets/rivalzoo-icon.png">
+  <script>
+  // Lojas do Rival Zoo. Quando o app estiver na App Store, preencha o
+  // número (App Store Connect → Informações do app → Apple ID).
+  var APP_STORE_ID = "";
+  var PLAY = "https://play.google.com/store/apps/details?id=br.com.rivalzoo.app";
+  var APPLE = APP_STORE_ID
+    ? "https://apps.apple.com/app/id" + APP_STORE_ID
+    : "https://apps.apple.com/search?term=Rival%20Zoo";
+  // Celular: direto para a loja certa, antes de desenhar a página.
+  (function () {
+    var ua = navigator.userAgent;
+    var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var store = /Android/.test(ua) ? PLAY : ios ? APPLE : null;
+    if (store) { document.documentElement.dataset.redirect = "1"; location.replace(store); }
+  })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/app.css">
+  <style>
+    :root { --c: #4CC38A; }
+    main.download { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 40px 16px; text-align: center; }
+    main.download .icon { width: 104px; height: 104px; border-radius: 24px; box-shadow: 0 14px 34px rgba(76, 195, 138, .28); }
+    main.download h1 { font-family: var(--display); font-size: clamp(1.9rem, 6vw, 2.6rem); line-height: 1.1; margin: 0; }
+    main.download p { color: var(--muted); max-width: 440px; margin: 0; }
+    main.download .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    main.download .badges img { height: 54px; display: block; }
+    main.download .opening { display: none; color: var(--c); font-weight: 600; }
+    [data-redirect] main.download .opening { display: block; }
+    main.download a.site { color: var(--c); }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <main class="download">
+    <img class="icon" src="../../../assets/rivalzoo-icon.png" alt="Rival Zoo">
+    <h1 id="title">Baixe o Rival Zoo</h1>
+    <p id="lead">Quebra-cabeça de lógica com a fauna do Brasil: 240 fases em 6 biomas e um desafio novo todo dia.</p>
+    <p class="opening" id="opening">Abrindo a loja…</p>
+    <div class="badges">
+      <a id="apple" href="https://apps.apple.com/search?term=Rival%20Zoo" target="_blank" rel="noopener" aria-label="Baixar na App Store"><img src="../../../assets/badge-app-store.svg" alt="Download on the App Store"></a>
+      <a id="play" href="https://play.google.com/store/apps/details?id=br.com.rivalzoo.app" target="_blank" rel="noopener" aria-label="Baixar no Google Play"><img src="../../../assets/badge-google-play.svg" alt="Get it on Google Play"></a>
+    </div>
+    <a class="site" id="site" href="../">Conheça o Rival Zoo</a>
+  </main>
+  <script>
+  document.getElementById("apple").href = APPLE;
+  document.getElementById("play").href = PLAY;
+  var TEXT = {
+    pt: { title: "Baixe o Rival Zoo", lead: "Quebra-cabeça de lógica com a fauna do Brasil: 240 fases em 6 biomas e um desafio novo todo dia.", opening: "Abrindo a loja…", site: "Conheça o Rival Zoo" },
+    en: { title: "Get Rival Zoo", lead: "Logic puzzles with Brazil's wildlife: 240 levels across 6 biomes and a new challenge every day.", opening: "Opening the store…", site: "Learn more about Rival Zoo" },
+    es: { title: "Descarga Rival Zoo", lead: "Rompecabezas de lógica con la fauna de Brasil: 240 niveles en 6 biomas y un desafío nuevo cada día.", opening: "Abriendo la tienda…", site: "Conoce Rival Zoo" }
+  };
+  var lang = (navigator.language || "pt").slice(0, 2);
+  var t = TEXT[lang] || TEXT.en;
+  document.documentElement.lang = lang in TEXT ? (lang === "pt" ? "pt-BR" : lang) : "en";
+  document.title = t.title;
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("lead").textContent = t.lead;
+  document.getElementById("opening").textContent = t.opening;
+  document.getElementById("site").textContent = t.site;
+  </script>
+</body>
+</html>
